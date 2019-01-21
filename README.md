@@ -1,7 +1,15 @@
-Users list
+Address Book
 ==========
 
-This is a simple Symfony 3 application for managing users. Has been written as a test task.
+This is a  Symfony 3 application for managing addressbook. Has been written as a test task.
+
+Fooloowing Technique Used
+=========================
+
+Symfony 3.4
+Doctrine with SQLite
+Twig
+PHP 7.0
 
 Installation
 ============
