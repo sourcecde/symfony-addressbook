@@ -6,10 +6,10 @@ This is a  Symfony 3 application for managing addressbook. Has been written as a
 Fooloowing Technique Used
 =========================
 
-Symfony 3.4
-Doctrine with SQLite
-Twig
-PHP 7.0
+-Symfony 3.4
+-Doctrine with SQLite
+-Twig
+-PHP 7.0
 
 Installation
 ============
