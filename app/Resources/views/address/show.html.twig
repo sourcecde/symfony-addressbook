@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Address:Details{% endblock %}
+
+{% block body %}
+<h2 class="page-header">Address Details</h2>
+
+<span style="text-align:left;">
+    {{ address.firstname }}&nbsp;{{ address.lastname }}
+ </span>
+<span style="float:right;">
+{% if address.picture %}
+<img src="{{ asset('uploads/' ~ address.picture) }}"  height="60" width="60">
+{% endif %}
+</span>
+    
+    <ul class="list-group" style="margin-top: 47px;">
+        <li class="list-group-item">Firstname: {{ address.firstname }}</li>
+        <li class="list-group-item">Lastname: {{ address.lastname }}</li>
+        <li class="list-group-item">Street: {{ address.street }}</li>
+        <li class="list-group-item">Number: {{ address.number }}</li>
+        <li class="list-group-item">Zip: {{ address.zip }}</li>
+        <li class="list-group-item">City: {{ address.city }}</li>
+        <li class="list-group-item">Country: {{ country }}</li>
+        <li class="list-group-item">Phone: {{ address.phone }}</li>
+        <li class="list-group-item">Birthday: {% if address.birthday %}{{ address.birthday|date('F j, Y') }}{% endif %}</li>
+        <li class="list-group-item">Email Address: {{ address.email }}</li>
+    </ul>
+    <a href="{{ path('address_edit', { 'id': address.id }) }}" class="btn btn-success">EDIT</a>
+    <a class="btn btn-default" href="/">Back to Listing</a>
+{% endblock %}

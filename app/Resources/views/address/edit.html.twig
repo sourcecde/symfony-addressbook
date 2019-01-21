@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}AddressBook:Edit{% endblock %}
+{% block body %}
+    <h1>Address Edit</h1>
+
+    <div align="right">
+      <a href="{{ path('address_index') }}" class="btn btn-default">Back to Listing</a>
+    </div>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <span style="text-align:left;">
+    {% if address.picture %}
+    <img src="{{ asset('uploads/' ~ address.picture) }}"  height="75" width="75">
+    {% endif %}
+    </span>
+        <input type="submit" value="EDIT" class="btn btn-success" />
+    {{ form_end(edit_form) }}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block title %}AddressBook:Listing{% endblock %}
+
+{% block body %}
+    <h2 class="page-header">Address List</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sl. No.</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Country</th>
+                <th>Phone</th>
+                <th>Birthday</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for address in addresses %}
+            <tr>
+                <td><a href="{{ path('address_show', { 'id': address.id }) }}">{{ address.id }}</a></td>
+                <td>{{ address.firstname }}</td>
+                <td>{{ address.lastname }}</td>
+                <td>{{ address.country }}</td>
+                <td>{{ address.phone }}</td>
+                <td>{% if address.birthday %}{{ address.birthday|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ address.email }}</td>
+                <td>
+                            <a href="{{ path('address_show', { 'id': address.id }) }}" class="btn btn-success">VIEW</a>
+                            <a href="{{ path('address_edit', { 'id': address.id }) }}" class="btn btn-default">EDIT</a>
+                            <a href="{{ path('address_delete', { 'id': address.id }) }}" class="btn btn-danger" onclick="return confirm('Do you want to delete this record??')">DELETE</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(addresses) }}
+</div>
+{% endblock %}

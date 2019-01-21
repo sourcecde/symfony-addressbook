@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block title %}AddressBook:Create{% endblock %}
+{% block body %}
+    <h1>New Address Entry</h1>
+
+    <div align="right">
+      <a href="{{ path('address_index') }}" class="btn btn-default">Back to Listing</a>
+    </div>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+            {{ form_row(form.picture) }}
+        <input type="submit" value="CREATE" class="btn btn-success" />
+    {{ form_end(form) }}
+
+{% endblock %}
