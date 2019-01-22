@@ -4,6 +4,13 @@
 
 {% block body %}
     <h2 class="page-header">Address List</h2>
+    <div>
+        <form action="{{ path('address_index') }}" method="get">
+        <label for="filter">Search</label>
+        <input name="filter" type="text">
+        <button type="submit" class="btn btn-default btn-sn">Search Now</button>
+        </form>
+    </div>
 {% if addresses is empty %}
     <div class="container">
       <h1>Sorry!No Records Found!</h1>
@@ -15,7 +22,6 @@
                 <th>Sl. No.</th>
                 <th>Firstname</th>
                 <th>Lastname</th>
-                <th>Country</th>
                 <th>Phone</th>
                 <th>Birthday</th>
                 <th>Email</th>
@@ -28,7 +34,6 @@
                 <td><a href="{{ path('address_show', { 'id': address.id }) }}">{{ address.id }}</a></td>
                 <td>{{ address.firstname }}</td>
                 <td>{{ address.lastname }}</td>
-                <td>{{ address.country }}</td>
                 <td>{{ address.phone }}</td>
                 <td>{% if address.birthday %}{{ address.birthday|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ address.email }}</td>
