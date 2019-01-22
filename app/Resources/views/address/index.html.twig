@@ -4,7 +4,11 @@
 
 {% block body %}
     <h2 class="page-header">Address List</h2>
-
+{% if addresses is empty %}
+    <div class="container">
+      <h1>Sorry!No Records Found!</h1>
+    </div>
+{% else %}
     <table class="table">
         <thead>
             <tr>
@@ -37,6 +41,7 @@
         {% endfor %}
         </tbody>
     </table>
+    {% endif %}
     {# display navigation #}
 <div class="navigation">
     {{ knp_pagination_render(addresses) }}
