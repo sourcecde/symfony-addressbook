@@ -27,18 +27,33 @@ class AddressController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $addresses = $em->getRepository('AppBundle:Address')->findAll();
+        // $addresses = $em->getRepository('AppBundle:Address')->findAll();
+        
+        $queryBuilder = $em->getRepository('AppBundle:Address')->createQueryBuilder('ad');
+        if ($request->query->getAlnum('filter')) {
+        $queryBuilder
+                ->where('ad.firstname LIKE :search')
+                ->orwhere('ad.lastname LIKE :search')
+                ->orwhere('ad.email LIKE :search')
+                ->orwhere('ad.phone LIKE :search')
+                ->orwhere('ad.city LIKE :search')
+                ->orwhere('ad.street LIKE :search')
+                ->orwhere('ad.city LIKE :search')
+                ->setParameter('search', '%' . $request->query->getAlnum('filter') . '%');
+        }
 
+        $query = $queryBuilder->getQuery();
         /**
         * @var $paginator \Knp\Component\Pager\Paginator
         **/
         $paginator = $this->get('knp_paginator');
         $result = $paginator->paginate(
-            $addresses, /* query NOT result */
+            $query, /* query NOT result */
             $request->query->getInt('listing', 1)/*page number*/,
-            $request->query->getInt('limit', 10)
+            $request->query->getInt('limit', 5)
             //10/*limit per page*/
         );
+
         return $this->render('address/index.html.twig', array(
             'addresses' => $result,
         ));
