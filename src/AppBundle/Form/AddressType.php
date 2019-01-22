@@ -35,7 +35,7 @@ class AddressType extends AbstractType
                         'format' => 'yyyy-MM-dd',
                     ))
                 ->add('email', EmailType::class)
-                ->add('picture', FileType::class,  array('data_class' => null, 'required' => false));
+                ->add('picture', FileType::class,  array('data_class' => null, 'label' => 'Picture(Optional)', 'required' => false));
     }/**
      * {@inheritdoc}
      */
